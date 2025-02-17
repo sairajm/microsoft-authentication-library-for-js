@@ -2,11 +2,11 @@
 const msalConfig = {
     auth: {
         clientId: "b5c2e510-4a17-4feb-b219-e55aa5b74144",
-        authority: "https://login.microsoftonline.com/common"
+        authority: "https://login.microsoftonline.com/common", // "https://login.microsoftonline.com/ENTER_TENANT_ID",
+        redirectUri: "/redirect",
     },
     cache: {
-        cacheLocation: "sessionStorage", // This configures where your cache will be stored
-        storeAuthStateInCookie: false, // Set this to "true" if you are having issues on IE11 or Edge
+        cacheLocation: "localStorage", // This configures where your cache will be stored
     },
     system: {
         allowPlatformBroker: false, // Disables WAM Broker
