@@ -1,12 +1,13 @@
 // Config object to be passed to Msal on creation
 const msalConfig = {
     auth: {
-        clientId: "b5c2e510-4a17-4feb-b219-e55aa5b74144",
-        authority: "https://login.microsoftonline.com/common"
+        clientId: "4c83f61e-ed22-458c-9801-dab80e6fa296",
+        authority: "https://login.microsoftonline.com/4cc65fd6-9c76-4871-a542-eb12a5a7800c",
+        redirectUri: "https://localhost:44335/signin-oidc",
     },
     cache: {
-        cacheLocation: "sessionStorage", // This configures where your cache will be stored
-        storeAuthStateInCookie: false, // Set this to "true" if you are having issues on IE11 or Edge
+        cacheLocation: "localStorage", // This configures where your cache will be stored
+        storeAuthStateInCookie: true, // Set this to "true" if you are having issues on IE11 or Edge
     },
     system: {
         allowPlatformBroker: false, // Disables WAM Broker
@@ -52,7 +53,7 @@ const tokenRequest = {
 };
 
 const silentRequest = {
-    loginHint: "IDLAB@msidlab0.ccsctp.net"
+    loginHint: "smadhavan@endpoint.com"
 };
 
 const logoutRequest = {}
