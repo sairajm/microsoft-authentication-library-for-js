@@ -1,17 +1,17 @@
 // Config object to be passed to Msal on creation
 const msalConfig = {
     auth: {
-        clientId: "b5c2e510-4a17-4feb-b219-e55aa5b74144",
-        authority:
-            "https://login.microsoftonline.com/72f988bf-86f1-41af-91ab-2d7cd011db47",
+        clientId: "4c83f61e-ed22-458c-9801-dab80e6fa296",
+        authority: "https://login.microsoftonline.com/4cc65fd6-9c76-4871-a542-eb12a5a7800c",
+        redirectUri: "https://localhost:44335/signin-oidc",
     },
     cache: {
-        cacheLocation: "sessionStorage", // This configures where your cache will be stored
-        storeAuthStateInCookie: false, // Set this to "true" if you are having issues on IE11 or Edge
+        cacheLocation: "localStorage", // This configures where your cache will be stored
+        storeAuthStateInCookie: true, // Set this to "true" if you are having issues on IE11 or Edge
     },
     system: {
+        allowPlatformBroker: false, // Disables WAM Broker
         loggerOptions: {
-            logLevel: msal.LogLevel.Trace,
             loggerCallback: (level, message, containsPii) => {
                 if (containsPii) {
                     return;
@@ -29,40 +29,31 @@ const msalConfig = {
                     case msal.LogLevel.Warning:
                         console.warn(message);
                         return;
-                    default:
-                        console.log(message);
-                        return;
                 }
-            },
-        },
-    },
-    telemetry: {
-        application: {
-            appName: "MSAL Browser V2 Default Sample",
-            appVersion: "1.0.0",
-        },
-    },
+            }
+        }
+    }
 };
 
 // Add here scopes for id token to be used at MS Identity Platform endpoints.
 const loginRequest = {
-    scopes: ["User.Read"],
+    scopes: ["User.Read"]
 };
 
 // Add here the endpoints for MS Graph API services you would like to use.
 const graphConfig = {
     graphMeEndpoint: "https://graph.microsoft.com/v1.0/me",
-    graphMailEndpoint: "https://graph.microsoft.com/v1.0/me/messages",
+    graphMailEndpoint: "https://graph.microsoft.com/v1.0/me/messages"
 };
 
 // Add here scopes for access token to be used at MS Graph API endpoints.
 const tokenRequest = {
     scopes: ["Mail.Read"],
-    forceRefresh: false, // Set this to "true" to skip a cached token and go to the server to get a new token
+    forceRefresh: false // Set this to "true" to skip a cached token and go to the server to get a new token
 };
 
 const silentRequest = {
-    scopes: ["openid", "profile", "User.Read", "Mail.Read"],
+    loginHint: "smadhavan@endpoint.com"
 };
 
-const logoutRequest = {};
+const logoutRequest = {}
